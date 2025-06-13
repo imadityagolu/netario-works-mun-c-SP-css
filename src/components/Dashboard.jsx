@@ -1,9 +1,11 @@
+import './Dashboard.css';
+
 function Dashboard() {
-    return(
+    return (
         <>
-    
-        <h1>Dashboard</h1>
-        
+        <div className='right-pannel'>
+            <h1 className="dashboard-title">Dashboard</h1>
+        </div>
         </>
     );
 }

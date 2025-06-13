@@ -4,8 +4,9 @@ import { IoMdArrowRoundBack, IoIosCheckmarkCircle, IoIosArrowBack, IoIosArrowFor
 import { MdImageSearch } from "react-icons/md";
 import { BsStars } from "react-icons/bs";
 
-function AddProduct() {
+import './AddProduct.css';
 
+function AddProduct() {
   const [currentStep, setCurrentStep] = useState(1);
 
   // Toggle for Advance section
@@ -22,17 +23,17 @@ function AddProduct() {
 
   // Toggle states for variant buttons
   const variantButtons = useMemo(() => [
-  "Color",
-  "Size",
-  "Expire",
-  "Material",
-  "Model",
-  "Weight",
-  "Skin Type",
-  "Packing Type",
-  "Flavour",
-  "Gender",
-], []);
+    "Color",
+    "Size",
+    "Expire",
+    "Material",
+    "Model",
+    "Weight",
+    "Skin Type",
+    "Packing Type",
+    "Flavour",
+    "Gender",
+  ], []);
   const [variantToggles, setVariantToggles] = useState(
     variantButtons.reduce((acc, button) => ({ ...acc, [button]: false }), {})
   );
@@ -77,58 +78,56 @@ function AddProduct() {
     switch (currentStep) {
       case 1:
         return (
-          <div className="overflow-auto h-[603px]">
+          <div className="step-container">
             <div>
               {/* General Information heading */}
-              <div className="mt-5 pl-5">
-                <h1 className="flex text-xl gap-2 items-center ml-2">
-                  <IoMdArrowRoundBack className="flex items-center text-2xl" />
+              <div className="heading-container">
+                <h1 className="heading">
+                  <IoMdArrowRoundBack className="back-icon" />
                   Add New Products
                 </h1>
               </div>
 
               {/* Tools */}
-              <div className="mt-5 mb-10">
-
+              <div className="tools-container">
                 {/* Progress bar */}
-                <div className="px-50 flex justify-center">
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-white border-1 border-green-400 rounded-xl bg-green-500" />
-                    <button className="border-1 w-50"></button>
+                <div className="progress-bar">
+                  <div className="progress-step active">
+                    <IoIosCheckmarkCircle className="progress-icon active" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle />
-                    <button className="border-1 w-50"></button>
+                  <div className="progress-step">
+                    <IoIosCheckmarkCircle className="progress-icon" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle />
-                    <button className="border-1 w-50"></button>
+                  <div className="progress-step">
+                    <IoIosCheckmarkCircle className="progress-icon" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle />
+                  <div className="progress-step">
+                    <IoIosCheckmarkCircle className="progress-icon" />
                   </div>
                 </div>
 
                 {/* Details of progress bar */}
-                <div className="w-110 text-center ml-15">
+                <div className="progress-details">
                   <b>General Information</b>
-                  <p className="text-sm text-gray-500">
+                  <p className="progress-description">
                     Basic info + Categories + Supplier + Inventory + Product Type
                   </p>
                 </div>
 
                 {/* Form */}
-                <div className="mt-5 px-30">
-                  <div className="border-1 border-gray-200 rounded-xl bg-white px-20">
-
+                <div className="form1-container">
+                  <div className="form1-box">
                     {/* Item Type */}
-                    <div className="flex gap-1 mt-5">
-                      <h1>Item Type</h1>
-                      <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                    <div className="form-group">
+                      <p><b>Item Type</b></p>
+                      <p className="info-icon">?</p>
                     </div>
 
                     {/* items button */}
-                    <div className="flex gap-5">
+                    <div className="radio-group">
                       <div>
                         <input type="radio" id="goods" name="goods" value="goods" /> Goods
                       </div>
@@ -138,76 +137,76 @@ function AddProduct() {
                     </div>
 
                     {/* Product Name and SKU */}
-                    <div className="flex mt-5 justify-between gap-5">
+                    <div className="form-row">
                       <div>
-                        <label>Product Name</label>
+                        <label><b>Product Name</b></label>
                         <br />
                         <input
                           type="text"
                           placeholder="Enter New Product name"
-                          className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-90"
+                          className="input-field"
                         />
                       </div>
                       <div>
-                        <label>SKU</label>
+                        <label><b>SKU</b></label>
                         <br />
                         <input
                           type="text"
                           placeholder="Enter SKU"
-                          className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-90"
+                          className="input-field"
                         />
                       </div>
                     </div>
 
                     {/* Barcode */}
-                    <div className="flex mt-5 justify-between gap-5">
+                    <div className="form-row">
                       <div>
-                        <label>Barcode</label>
+                        <label><b>Barcode</b></label>
                         <br />
-                        <div className="flex border-1 border-gray-200 rounded-md text-left gap-2 w-90 items-center">
+                        <div className="input-with-icon">
                           <input
                             type="text"
                             placeholder="Enter 12 Digit Code"
-                            className="px-3 py-1 text-left w-80"
+                            className="input-field barcode"
                           />
-                          <IoMdBarcode className="text-xl" />
+                          <IoMdBarcode className="icon" />
                         </div>
                       </div>
                       <div>
-                        <div className="flex justify-end">
-                          <label className="text-right text-blue-500">Generate Barcode</label>
+                        <div className="generate-barcode">
+                          <label className="generate-label">Generate Barcode</label>
                         </div>
-                        <div className="flex border-1 border-gray-200 rounded-md text-left gap-2 w-90 items-center">
+                        <div className="input-with-icon">
                           <input
                             type="text"
                             placeholder="Enter 12 Digit Code"
-                            className="px-3 py-1 text-left w-80"
+                            className="input-field barcode"
                           />
-                          <IoMdBarcode className="text-xl" />
+                          <IoMdBarcode className="icon" />
                         </div>
                       </div>
                     </div>
 
                     {/* Category */}
-                    <div className="flex mt-5 justify-between gap-5">
+                    <div className="form-row">
                       <div>
-                        <label>Category</label>
+                        <label><b>Category</b></label>
                         <br />
                         <select
                           name="category"
                           id="category"
-                          className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                          className="select-field"
                         >
                           <option value="">Select Category</option>
                         </select>
                       </div>
                       <div>
-                        <label>Sub Category</label>
+                        <label><b>Sub Category</b></label>
                         <br />
                         <select
                           name="category"
                           id="category"
-                          className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                          className="select-field"
                         >
                           <option value="">Select Category</option>
                         </select>
@@ -215,14 +214,14 @@ function AddProduct() {
                     </div>
 
                     {/* Brand - manufacturer */}
-                    <div className="flex mt-5 justify-between">
+                    <div className="form-row">
                       <div>
-                        <label>Brand/Manufacturer</label>
+                        <label><b>Brand/Manufacturer</b></label>
                         <br />
                         <select
                           name="category"
                           id="category"
-                          className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                          className="select-field"
                         >
                           <option value="">Select Category</option>
                         </select>
@@ -230,13 +229,13 @@ function AddProduct() {
                     </div>
 
                     {/* Product Type */}
-                    <div className="flex gap-1 mt-5 justify-between w-60">
-                      <h1>Product Type</h1>
-                      <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                    <div className="form-group product-type">
+                      <p><b>Product Type</b></p>
+                      <p className="info-icon">?</p>
                     </div>
 
                     {/* product button */}
-                    <div className="flex gap-5">
+                    <div className="radio-group">
                       <div>
                         <input type="radio" id="simple" name="type" value="simple" /> Simple
                       </div>
@@ -249,25 +248,25 @@ function AddProduct() {
                     </div>
 
                     {/* Select Supplier */}
-                    <div className="flex mt-5 justify-between gap-5">
+                    <div className="form-row">
                       <div>
-                        <label>Select Supplier</label>
+                        <label><b>Select Supplier</b></label>
                         <br />
                         <select
                           name="category"
                           id="category"
-                          className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                          className="select-field"
                         >
                           <option value="">Select Category</option>
                         </select>
                       </div>
                       <div>
-                        <label>Supplier SKU</label>
+                        <label><b>Supplier SKU</b></label>
                         <br />
                         <select
                           name="category"
                           id="category"
-                          className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                          className="select-field"
                         >
                           <option value="">Select Category</option>
                         </select>
@@ -275,14 +274,14 @@ function AddProduct() {
                     </div>
 
                     {/* Warehouse */}
-                    <div className="flex mt-5 justify-between">
+                    <div className="form-row">
                       <div>
-                        <label>Warehouse/Location</label>
+                        <label><b>Warehouse/Location</b></label>
                         <br />
                         <select
                           name="category"
                           id="category"
-                          className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                          className="select-field"
                         >
                           <option value="">Select Category</option>
                         </select>
@@ -290,55 +289,51 @@ function AddProduct() {
                     </div>
 
                     {/* Advance */}
-                    <div className="mt-5 items-center mb-5">
-
+                    <div className="advance-section">
                       {/* advance toggling */}
-                      <div className="flex gap-1 items-center">
-                        <h1>Advance</h1>
-                        <label className="items-center cursor-pointer">
+                      <div className="toggle-group">
+                        <p><b>Advance</b></p>
+                        <label className="toggle-label">
                           <input
                             type="checkbox"
                             className="sr-only"
                             checked={isToggled}
                             onChange={handleToggle}
                           />
-                          <div className="relative w-8 h-5 bg-gray-300 rounded-full transition-all duration-400">
+                          <div className="toggle-switch">
                             <div
-                              className={`absolute top-1 left-1 w-3 h-3 bg-white rounded-full shadow transition-transform duration-400 ${
-                                isToggled ? "translate-x-3" : ""
-                              }`}
+                              className={`toggle-knob ${isToggled ? "toggled" : ""}`}
                             ></div>
                           </div>
                         </label>
                       </div>
 
                       {isToggled && (
-                        <div className="mt-5">
-
+                        <div className="advance-content">
                           {/* Lead Time */}
-                          <div className="flex mt-5 justify-between gap-5">
+                          <div className="form-row">
                             <div>
-                              <div className="flex justify-between w-90">
-                                <label>Lead Time</label>
-                                <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                              <div className="label-group">
+                                <p><b>Lead Time</b></p>
+                                <p className="info-icon">?</p>
                               </div>
                               <select
                                 name="category"
                                 id="category"
-                                className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                                className="select-field"
                               >
                                 <option value="">Select Category</option>
                               </select>
                             </div>
                             <div>
-                              <div className="flex justify-between w-90">
-                                <label>Recorder Level</label>
-                                <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                              <div className="label-group">
+                                <p><b>Recorder Level</b></p>
+                                <p className="info-icon">?</p>
                               </div>
                               <select
                                 name="category"
                                 id="category"
-                                className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                                className="select-field"
                               >
                                 <option value="">Select Category</option>
                               </select>
@@ -346,58 +341,50 @@ function AddProduct() {
                           </div>
 
                           {/* Initial Stock */}
-                          <div className="flex mt-5 gap-5">
-
+                          <div className="form-row stock-section">
                             {/* initial stock quantity*/}
                             <div>
-                              <label>Initial Stock Quantity</label>
-                              <br />
+                              <p><b>Initial Stock Quantity</b></p>
                               <select
                                 name="category"
                                 id="category"
-                                className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                                className="select-field"
                               >
                                 <option value="">Select Category</option>
                               </select>
                             </div>
 
                             {/* Track */}
-                            <div className="ml-17">
-                              <div className="flex justify-between w-50">
-                                <h1>Track</h1>
-                                <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                            <div className="track-section">
+                              <div className="label-group track">
+                                <p><b>Track</b></p>
+                                <p className="info-icon">?</p>
                               </div>
-                              <div className="flex justify-around w-50">
-                                <div className="flex gap-5 w-50">
-                                  <div>
-                                    <input type="radio" id="serialno" name="track" value="serialno"/> Serial No.
-                                  </div>
-                                  <div>
-                                    <input type="radio" id="batchno" name="track" value="batchno"/> Batch No.
-                                  </div>
+                              <div className="radio-group track">
+                                <div>
+                                  <input type="radio" id="serialno" name="track" value="serialno"/> Serial No.
+                                </div>
+                                <div>
+                                  <input type="radio" id="batchno" name="track" value="batchno"/> Batch No.
                                 </div>
                               </div>
                             </div>
 
                             {/* Status */}
-                            <div className="ml-7">
-                              <div className="flex justify-between w-30">
-                                <h1>Status</h1>
-                                <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                            <div className="status-section">
+                              <div className="label-group status">
+                                <p><b>Status</b></p>
+                                <p className="info-icon">?</p>
                               </div>
-                              <div className="flex justify-around w-30">
-                                <div className="flex gap-5 w-30">
-                                  <div>
-                                    <input type="checkbox" id="returnable" name="status" value="returnable"/> Returnable
-                                  </div>
+                              <div className="radio-group status">
+                                <div>
+                                  <input type="checkbox" id="returnable" name="status" value="returnable"/> Returnable
                                 </div>
                               </div>
                             </div>
                           </div>
-
                         </div>
                       )}
-
                     </div>
                   </div>
                 </div>
@@ -408,79 +395,74 @@ function AddProduct() {
 
       case 2:
         return (
-          <div className="overflow-auto h-[603px]">
+          <div className="step-container">
             <div>
-
               {/* Pricing & Tax heading */}
-              <div className="mt-5 pl-5">
-                <h1 className="flex text-xl gap-2 items-center ml-2">
-                  <IoMdArrowRoundBack className="flex items-center text-2xl" />
+              <div className="heading-container">
+                <h1 className="heading">
+                  <IoMdArrowRoundBack className="back-icon" />
                   Pricing & Tax
                 </h1>
               </div>
 
               {/* Tools */}
-              <div className="mt-5 mb-10">
-
+              <div className="tools-container">
                 {/* Progress bar */}
-                <div className="px-50 flex justify-center">
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-white border-1 border-green-400 rounded-xl bg-green-500" />
-                    <button className="border-1 w-50"></button>
+                <div className="progress-bar">
+                  <div className="progress-step active">
+                    <IoIosCheckmarkCircle className="progress-icon active" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosRadioButtonOff className="text-white border-1 border-green-400 rounded-xl bg-green-500" />
-                    <button className="border-1 w-50"></button>
+                  <div className="progress-step active">
+                    <IoIosRadioButtonOff className="progress-icon active" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle />
-                    <button className="border-1 w-50"></button>
+                  <div className="progress-step">
+                    <IoIosCheckmarkCircle className="progress-icon" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle />
+                  <div className="progress-step">
+                    <IoIosCheckmarkCircle className="progress-icon" />
                   </div>
                 </div>
 
                 {/* Details of progress bar */}
-                <div className="w-100 text-center ml-72">
+                <div className="progress-details pricing">
                   <b>Pricing & Tax</b>
-                  <p className="text-sm text-gray-500">All Price and tax-related</p>
+                  <p className="progress-description">All Price and tax-related</p>
                 </div>
 
                 {/* Form */}
-                <div className="mt-5 px-30">
-                  <div className="border-1 border-gray-200 rounded-xl bg-white px-20">
+                <div className="form1-container">
+                  <div className="form1-box">
                     {/* Purchase Price */}
-                    <div className="flex mt-10 justify-between">
+                    <div className="form-row">
                       <div>
-                        <label>Purchase Price</label>
-                        <br />
+                        <p><b>Purchase Price</b></p>
                         <input
                           type="text"
                           placeholder="Enter New Product name"
-                          className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-90"
+                          className="input-field"
                         />
                       </div>
                       <div>
-                        <label>Selling Price</label>
-                        <br />
+                        <p><p>Selling Price</p></p>
                         <input
                           type="text"
                           placeholder="Enter SKU"
-                          className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-90"
+                          className="input-field"
                         />
                       </div>
                     </div>
 
                     {/* Wholesale */}
-                    <div className="flex mt-5 justify-between">
+                    <div className="form-row">
                       <div>
-                        <label>Wholesale Price / Bulk Price</label>
-                        <br />
+                        <p><b>Wholesale Price / Bulk Price</b></p>
                         <select
                           name="category"
                           id="category"
-                          className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                          className="select-field"
                         >
                           <option value="">Select Category</option>
                         </select>
@@ -488,23 +470,21 @@ function AddProduct() {
                     </div>
 
                     {/* Quantity */}
-                    <div className="flex mt-5 justify-between">
+                    <div className="form-row">
                       <div>
-                        <label>Quantity</label>
-                        <br />
+                        <p><b>Quantity</b></p>
                         <input
                           type="text"
                           placeholder="In no."
-                          className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-90"
+                          className="input-field"
                         />
                       </div>
                       <div>
-                        <label>Unit</label>
-                        <br />
+                        <p><b>Unit</b></p>
                         <select
                           name="category"
                           id="category"
-                          className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                          className="select-field"
                         >
                           <option value="">Select Category</option>
                         </select>
@@ -512,49 +492,49 @@ function AddProduct() {
                     </div>
 
                     {/* Discount Price */}
-                    <div className="flex mt-5 justify-between">
+                    <div className="form-row">
                       <div>
-                        <div className="flex justify-between">
-                          <label>Discount Price</label>
-                          <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                        <div className="label-group">
+                          <p><b>Discount Price</b></p>
+                          <p className="info-icon">?</p>
                         </div>
                         <input
                           type="text"
                           placeholder="Enter New Product name"
-                          className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-90"
+                          className="input-field"
                         />
                       </div>
                       <div>
-                        <div className="flex justify-between">
-                          <label>Discount Period</label>
-                          <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                        <div className="label-group">
+                          <p><b>Discount Period</b></p>
+                          <p className="info-icon">?</p>
                         </div>
-                        <div className="flex gap-4">
+                        <div className="date-group">
                           <input
                             type="date"
                             placeholder="From"
-                            className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-45"
+                            className="input-field date-from"
                           />
                           <input
                             type="date"
                             placeholder="To"
-                            className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-40"
+                            className="input-field date-to"
                           />
                         </div>
                       </div>
                     </div>
 
                     {/* Tax Rate */}
-                    <div className="flex mt-5 justify-between">
+                    <div className="form-row">
                       <div>
-                        <div className="flex justify-between">
-                          <label>Tax Rate</label>
-                          <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                        <div className="label-group">
+                          <p><b>Tax Rate</b></p>
+                          <p className="info-icon">?</p>
                         </div>
                         <select
                           name="category"
                           id="category"
-                          className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-90"
+                          className="select-field"
                         >
                           <option value="">Select Category</option>
                         </select>
@@ -562,18 +542,18 @@ function AddProduct() {
                     </div>
 
                     {/* HSN / SAC */}
-                    <div className="flex mt-5 justify-between">
+                    <div className="form-row">
                       <div>
-                        <div className="flex justify-between">
-                          <label>HSN / SAC</label>
-                          <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                        <div className="label-group">
+                          <p><b>HSN / SAC</b></p>
+                          <p className="info-icon">?</p>
                         </div>
                         <select
                           name="category"
                           id="category"
-                          className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-45"
+                          className="select-field hsn-sac"
                         >
-                          <option value="" className="text-gray-200">
+                          <option value="" className="placeholder-option">
                             HSN Code
                           </option>
                         </select>
@@ -581,39 +561,37 @@ function AddProduct() {
                     </div>
 
                     {/* Price Include GST */}
-                    <div className="mt-5 items-center mb-5">
-                      <div className="flex gap-1 items-center">
-                        <h1>Price Include GST</h1>
-                        <label className="items-center cursor-pointer">
+                    <div className="advance-section">
+                      <div className="toggle-group">
+                        <p><b>Price Include GST</b></p>
+                        <label className="toggle-label">
                           <input
                             type="checkbox"
                             className="sr-only"
                             checked={isToggled2}
                             onChange={handleToggle2}
                           />
-                          <div className="relative w-8 h-5 bg-gray-300 rounded-full transition-all duration-400">
+                          <div className="toggle-switch">
                             <div
-                              className={`absolute top-1 left-1 w-3 h-3 bg-white rounded-full shadow transition-transform duration-400 ${
-                                isToggled2 ? "translate-x-3" : ""
-                              }`}
+                              className={`toggle-knob ${isToggled2 ? "toggled" : ""}`}
                             ></div>
                           </div>
                         </label>
                       </div>
 
                       {isToggled2 && (
-                        <div className="flex mt-5 justify-between">
+                        <div className="form-row">
                           <div>
-                            <div className="flex justify-between">
-                              <label>GST Rate</label>
-                              <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                            <div className="label-group">
+                              <p><b>GST Rate</b></p>
+                              <p className="info-icon">?</p>
                             </div>
                             <select
                               name="category"
                               id="category"
-                              className="border-1 border-gray-200 rounded-md px-1 py-1 text-left w-45"
+                              className="select-field hsn-sac"
                             >
-                              <option value="" className="text-gray-200">
+                              <option value="" className="placeholder-option">
                                 0%
                               </option>
                             </select>
@@ -630,156 +608,161 @@ function AddProduct() {
 
       case 3:
         return (
-          <div className="overflow-auto h-[603px]">
+          <div className="step-container">
             <div>
               {/* Description & Media heading */}
-              <div className="mt-5 pl-5">
-                <h1 className="flex text-xl gap-2 items-center ml-2">
-                  <IoMdArrowRoundBack className="flex items-center text-2xl" />
+              <div className="heading-container">
+                <h1 className="heading">
+                  <IoMdArrowRoundBack className="back-icon" />
                   Description & Media
                 </h1>
               </div>
 
               {/* Tools */}
-              <div className="mt-5 mb-10">
+              <div className="tools-container">
                 {/* Progress bar */}
-                <div className="px-50 flex justify-center">
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-white border-1 border-green-400 rounded-xl bg-green-500" />
-                    <button className="border-1 w-50"></button>
+                <div className="progress-bar">
+                  <div className="progress-step active">
+                    <IoIosCheckmarkCircle className="progress-icon active" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-white border-1 border-green-400 rounded-xl bg-green-500" />
-                    <button className="border-1 w-50"></button>
+                  <div className="progress-step active">
+                    <IoIosCheckmarkCircle className="progress-icon active" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosRadioButtonOff className="text-white border-1 border-green-400 rounded-xl bg-green-500" />
-                    <button className="border-1 w-50"></button>
+                  <div className="progress-step active">
+                    <IoIosRadioButtonOff className="progress-icon active" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle />
+                  <div className="progress-step">
+                    <IoIosCheckmarkCircle className="progress-icon" />
                   </div>
                 </div>
 
                 {/* Details of progress bar */}
-                <div className="w-110 text-center ml-121">
+                <div className="progress-details description">
                   <b>Description & Media</b>
-                  <p className="text-sm text-gray-500">Image + Description + Documents + SEO</p>
+                  <p className="progress-description">Image + Description + Documents + SEO</p>
                 </div>
 
                 {/* Form top */}
-                <div className="mt-5 px-30">
-                  <div className="border-1 border-gray-200 rounded-xl bg-white px-20 pb-10">
+                <div className="form1-container">
+                  <div className="form1-box description-box">
                     {/* Description box */}
                     <div>
-                      <div className="flex justify-between mt-10">
-                        <label>Description</label>
-                        <p className="border-1 border-gray-200 text-gray-300 rounded-xl px-1">?</p>
+                      <div className="label-group">
+                        <p><b>Description</b></p>
+                        <p className="info-icon">?</p>
                       </div>
                       <textarea
                         placeholder="Write description about products..."
-                        className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-full h-20"
+                        className="textarea-field"
                       />
                     </div>
 
                     {/* Image box */}
-                    <div className="mt-5 border-2 border-dashed border-gray-200 rounded-md py-10">
-                      <div className="flex justify-center items-center w-full">
-                        <MdImageSearch className="text-blue-500 text-6xl" />
+                    <div className="image-upload">
+                      <div className="image-upload-icon">
+                        <MdImageSearch className="upload-icon" />
                       </div>
-                      <div className="flex justify-center items-center w-full ml-10">
+                      <div className="image-upload-input">
                         <label>Drag your image here, or </label>
-                        <input type="file" placeholder="browse" className="text-blue-500" />
+                        <input type="file" placeholder="browse" className="file-input" />
                       </div>
-                      <div className="flex justify-center items-center w-full">
-                        <label className="text-gray-300">Support JPEG, PNG, JPG</label>
+                      <div className="image-upload-support">
+                        <label className="support-text">Support JPEG, PNG, JPG</label>
                       </div>
                     </div>
+                    <br></br>
                   </div>
                 </div>
 
                 {/* Form bottom */}
-                <div className="mt-5 px-30">
-                  <div className="border-1 border-gray-200 rounded-xl bg-white px-20 pb-10">
+                <div className="form1-container">
+                  <div className="form1-box seo-box">
                     {/*SEO Meta Title */}
-                    <div className="flex mt-10 justify-between">
+                    <div className="form1-row">
                       <div>
-                        <div className="flex justify-between">
-                          <label>SEO Meta Title</label>
-                          <p className="border-1 border-gray-200 rounded-xl px-1">?</p>
+                        <div className="label-group">
+                          <p><b>SEO Meta Title</b></p>
+                          <p className="info-icon">?</p>
                         </div>
                         <input
                           type="text"
                           placeholder="Add Title"
-                          className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-70"
+                          className="input-field seo-title"
                         />
                       </div>
                       <div>
-                        <div className="flex justify-between">
-                          <label>SEO Meta Description</label>
-                          <p className="border-1 border-gray-200 rounded-xl px-1">?</p>
+                        <div className="label-group">
+                          <p><b>SEO Meta Description</b></p>
+                          <p className="info-icon">?</p>
                         </div>
                         <input
                           type="text"
                           placeholder="Write description"
-                          className="border-1 border-gray-200 rounded-md px-3 py-1 text-left w-120"
+                          className="input-field seo-description"
                         />
                       </div>
                     </div>
 
                     {/* AI Keywords */}
-                    <div className="mt-5 border-1 border-gray-200 rounded-md py-2 px-3 bg-blue-100">
-                      <div className="w-full flex">
-                        <BsStars className="text-blue-500 text-xl" />
+                    <div className="ai-keywords">
+                      <div className="keywords-header">
+                        <BsStars className="star-icon" />
                         <p>AI Keywords</p>
                       </div>
-                      <div className="w-full">
-                        <label className="text-gray-400 text-sm">
+                      <div className="keywords-description">
+                        <label className="keywords-info">
                           Based on your input data we've identified 5 keywords that may be a good fit
                           for your product.
                         </label>
+                        <br></br><br></br>
                       </div>
-                      <div className="flex gap-2 overflow-scroll overflow-y-hidden overflow-x-hidden mt-1 w-full">
+
+                      <div className="keywords-list">
                         <div>
-                          <div className="flex place-content-center items-center gap-1 border-1 border-gray-300 rounded-2xl px-2 bg-white">
+                          <div className="keyword-item">
                             <IoIosCheckmarkCircle /> Fittings <IoIosClose />
                           </div>
                         </div>
                         <div>
-                          <div className="flex place-content-center items-center gap-1 border-1 border-gray-300 rounded-2xl px-2 bg-blue-500 text-white">
-                            <IoIosCheckmarkCircle className="text-white" /> Hinges{" "}
-                            <IoIosClose className="text-white" />
+                          <div className="keyword-item active">
+                            <IoIosCheckmarkCircle className="keyword-icon" /> Hinges
+                            <IoIosClose className="keyword-icon" />
                           </div>
                         </div>
                         <div>
-                          <div className="flex place-content-center items-center gap-1 border-1 border-gray-300 rounded-2xl px-2 bg-white w-55">
+                          <div className="keyword-item construction">
                             <IoIosCheckmarkCircle /> Construction hardware <IoIosClose />
                           </div>
                         </div>
                         <div>
-                          <div className="flex place-content-center items-center gap-1 border-1 border-gray-300 rounded-2xl px-2 bg-white w-50">
+                          <div className="keyword-item door-windows">
                             <IoIosCheckmarkCircle /> Door and Windows <IoIosClose />
                           </div>
                         </div>
                         <div>
-                          <div className="flex place-content-center items-center gap-1 border-1 border-gray-300 rounded-2xl px-2 bg-white">
+                          <div className="keyword-item">
                             <IoIosCheckmarkCircle /> Buildings <IoIosClose />
                           </div>
                         </div>
                         <div>
-                          <div className="flex place-content-center items-center gap-1 border-1 border-gray-300 rounded-2xl px-2 bg-white">
+                          <div className="keyword-item">
                             <IoIosCheckmarkCircle /> Blocks <IoIosClose />
                           </div>
                         </div>
                       </div>
-                      <div className="mt-2">
+                      
+                      <div className="keywords-input">
                         <input
                           type="text"
                           placeholder="Type Keywords"
-                          className="border-1 border-gray-300 rounded-md px-3 py-1 text-left w-full bg-white"
+                          className="input-field keywords"
                         />
                       </div>
                     </div>
+                    <br></br>
                   </div>
                 </div>
               </div>
@@ -789,74 +772,74 @@ function AddProduct() {
 
       case 4:
         return (
-          <div className="overflow-auto h-[603px]">
+          <div className="step-container">
             <div>
               {/* Variants Heading */}
-              <div className="mt-5 pl-5">
-                <h1 className="flex text-xl gap-2 items-center">
-                  <IoMdArrowRoundBack className="flex items-center text-2xl" />
+              <div className="heading-container">
+                <h1 className="heading">
+                  <IoMdArrowRoundBack className="back-icon" />
                   Variants
                 </h1>
               </div>
 
               {/* Tools */}
-              <div className="mt-5 mb-10">
+              <div className="tools-container">
                 {/* Progress bar */}
-                <div className="px-50 flex justify-center">
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-white border-1 border-green-400 rounded-xl bg-green-500" />
-                    <button className="border-1 w-50"></button>
+                <div className="progress-bar">
+                  <div className="progress-step active">
+                    <IoIosCheckmarkCircle className="progress-icon active" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-white border-1 border-green-400 rounded-xl bg-green-500" />
-                    <button className="border-1 w-50"></button>
+                  <div className="progress-step active">
+                    <IoIosCheckmarkCircle className="progress-icon active" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosCheckmarkCircle className="text-white border-1 border-green-400 rounded-xl bg-green-500" />
-                    <button className="border-1 w-50"></button>
+                  <div className="progress-step active">
+                    <IoIosCheckmarkCircle className="progress-icon active" />
+                    <button className="progress-line"></button>
                   </div>
-                  <div className="flex items-center">
-                    <IoIosRadioButtonOff className="text-white border-1 border-green-400 rounded-xl bg-green-500" />
+                  <div className="progress-step active">
+                    <IoIosRadioButtonOff className="progress-icon active" />
                   </div>
                 </div>
 
                 {/* Details of progress bar */}
-                <div className="w-110 text-center ml-173">
+                <div className="progress-details variants">
                   <b>Variants</b>
-                  <p className="text-sm text-gray-500">Product Type & Variants</p>
+                  <p className="progress-description">Product Type & Variants</p>
                 </div>
 
                 {/* Form */}
-                <div className="mt-5 px-30">
+                <div className="form1-container">
                   {/* Buttons */}
-                  <div className="flex">
+                  <div className="variant-buttons">
                     {variantButtons.map((button, index) => (
                       <button
                         key={button}
-                        className={`border-1 no-border-bottom border-gray-400 px-1 ${
-                          index === 0 ? "rounded-tl-lg" : ""
-                        } ${variantToggles[button] ? "border-1 border-white bg-white text-black no-bottom-border" : "bg-gray-300 text-gray-600"}`}
+                        className={`variant-button ${index === 0 ? "first" : ""} ${
+                          variantToggles[button] ? "active" : ""
+                        }`}
                         onClick={() => toggleVariantContent(button)}
                       >
                         {button}
                       </button>
                     ))}
-                    <button className="border-1 border-gray-400 px-1 rounded-tr-lg">
-                      <p className="text-blue-500">+ Add More</p>
+                    <button className="variant-button add-more">
+                      <p className="add-more-text">+ Add More</p>
                     </button>
                   </div>
 
                   {/* Button Content */}
-                  <div className="bg-white px-15 py-5 rounded-bl-lg rounded-br-lg rounded-tr-lg">
+                  <div className="variant-content">
                     {variantButtons.map((button) =>
                       variantToggles[button] ? (
-                        <div key={button} className="mt-5">
+                        <div key={button} className="variant-section">
                           Select {button}
-                          <div className="mt-2 px-5">
+                          <div className="variant-select">
                             <select
                               name={`variant-${button.toLowerCase()}`}
                               id={`variant-${button.toLowerCase()}`}
-                              className="border-1 border-gray-200 rounded-md px-1 py-2 text-left w-full"
+                              className="select-field full-width"
                             >
                               <option value="">Select {button}</option>
                             </select>
@@ -882,40 +865,39 @@ function AddProduct() {
       {renderStep()}
 
       {/* Buttons */}
-      <div className="flex gap-3 justify-center py-3 bg-gray-100 border-1 border-gray-300">
+      <div className="button-bar">
         {currentStep === 1 ? (
           <Link
             to="/Inventory"
-            className="border-1 border-blue-600 px-5 py-2 bg-white text-blue-600 rounded-lg flex items-center gap-1"
+            className="nav-button previous"
           >
-            <IoIosArrowBack className="text-xl" /> Previous
+            <IoIosArrowBack className="nav-icon" /> Previous
           </Link>
         ) : (
           <button
-            className="border-1 border-blue-600 px-5 py-2 bg-white text-blue-600 rounded-lg flex items-center gap-1"
+            className="nav-button previous"
             onClick={handlePrevious}
           >
-            <IoIosArrowBack className="text-xl" /> Previous
+            <IoIosArrowBack className="nav-icon" /> Previous
           </button>
         )}
 
-        <button className="border-1 border-blue-600 px-5 py-2 bg-white text-blue-600 rounded-lg">
+        <button className="nav-button draft">
           Save as draft
         </button>
-        <button className="border-1 border-blue-600 px-5 py-2 text-white bg-blue-600 rounded-lg">
+        <button className="nav-button save">
           Save
         </button>
 
         {currentStep < 4 && (
           <button
-            className="border-1 border-blue-600 px-4 py-2 bg-white text-blue-600 rounded-lg flex items-center gap-1"
+            className="nav-button next"
             onClick={handleNext}
           >
-            Next <IoIosArrowForward className="text-xl" />
+            Next <IoIosArrowForward className="nav-icon" />
           </button>
         )}
       </div>
-
     </>
   );
 }

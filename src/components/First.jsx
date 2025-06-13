@@ -3,109 +3,115 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Porfile01 from '../images/profile.jpg';
 import { IoMdSettings, IoIosNotifications, IoIosCube, IoIosArrowForward, IoIosArrowDown, IoIosShare, IoIosAddCircle, IoMdArrowRoundBack } from "react-icons/io";
+import './First.css';
 
 function First() {
-
- const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen1, setIsOpen1] = useState(false);
   const toggleContent1 = () => {
     setIsOpen1(!isOpen1);
   };
 
   return (
     <>
-    <div className='fixed w-full'>
+    <div className="container">
 
       {/*header*/}
-      <div className='bg-gray-100 flex justify-between p-2'>
+      <div className="header">
 
         {/*company name*/}
         <div>
-        <h1 className='text-blue-500 font-bold'>MUN-C™</h1>
+          <h1 className="company-name">MUN-C™</h1>
         </div>
 
         {/*options*/}
-        <div className='flex gap-2'>
-          <button><IoMdSettings className='bg-gray-200 rounded-sm p-1 text-2xl text-blue-500' /></button>
-          <button><IoIosNotifications className='bg-gray-200 rounded-sm p-1 text-2xl text-blue-500' /></button>
-          <button><img src={Porfile01} alt="profile image" className='w-6 rounded-sm'/></button>
+        <div className="options">
+          <h1><IoMdSettings className="icon-settings" /></h1>
+          <h1><IoIosNotifications className="icon-notifications" /></h1>
+          <h1><img src={Porfile01} alt="profile image" className="profile-image"/></h1>
         </div>
 
       </div>
 
-      <hr className='text-gray-300'></hr>
+      <hr className="divider"></hr>
 
       {/*pannel*/}
-      <div className='bg-gray-300 w-[100%] h-[670px] flex'>
+      <div className="panel">
 
         {/*sidepannel*/}
-        <div className='bg-gray-100 w-[20%] border-1 border-gray-300 h-[670px] pt-10 pl-8 pr-6'>
+        <div className="side-panel">
 
           {/*dashboard*/}
-          <div className='flex justify-between'>
-            <Link to="/" className='flex text-xl pb-3 gap-2 text-gray-500 items-center'><IoIosCube /> Dashboard </Link> <IoIosArrowForward className="text-2xl" />
+          <div className="menu-item">
+            <Link to="/" className="menu-link"><IoIosCube /> Dashboard </Link> 
+            <span><IoIosArrowForward className="arrow-icon" /></span>
           </div>
 
           {/*inventory*/}
-          <div className=''>
-           
-            <div className='flex justify-between bg-gray'>
-            <Link to="/Inventory" className='flex text-xl pb-3 gap-2 text-gray-500 items-center'><IoIosCube /> Inventory </Link> 
-            <button onClick={toggleContent1} className='mt-[-15px]'>
-              {isOpen1 ? (
-                <IoIosArrowDown className="text-2xl" />
-              ):(
-                <IoIosArrowForward className="text-2xl" />
-              )}
-            </button>
+          <div>
+            <div className="menu-item">
+              <Link to="/Inventory" className="menu-link"><IoIosCube /> Inventory </Link> 
+              <span onClick={toggleContent1} className="toggle-button">
+                {isOpen1 ? (
+                  <IoIosArrowDown className="arrow-icon" />
+                ) : (
+                  <IoIosArrowForward className="arrow-icon" />
+                )}
+              </span>
             </div>
 
             {isOpen1 && (
               <div>
-                <div className='flex justify-between px-5 rounded-lg pt-2 bg-blue-100'>
-                  <Link to="/AddProduct" className='flex text-xl pb-3 gap-2 text-gray-500'>Add Products </Link>
+                <div className="submenu-item active">
+                  <Link to="/AddProduct" className="submenu-link">Add Products </Link>
                 </div>
-                <div className='flex justify-between px-5 rounded-lg pt-2'>
-                  <Link to="/AddProduct" className='flex text-xl pb-3 gap-2 text-gray-500'>Dashboard </Link>
-                </div><div className='flex justify-between px-5 rounded-lg pt-2 mb-4'>
-                  <Link to="/AddProduct" className='flex text-xl pb-3 gap-2 text-gray-500'>Dashboard </Link>
+                <div className="submenu-item">
+                  <Link to="/AddProduct" className="submenu-link">Dashboard </Link>
+                </div>
+                <div className="submenu-item last">
+                  <Link to="/AddProduct" className="submenu-link">Dashboard </Link>
                 </div>
               </div>
             )}
           </div>
 
           {/*stocks*/}
-          <div className='flex justify-between'>
-            <h1 className='flex text-xl pb-3 gap-2 text-gray-500  items-center'><IoIosCube /> Stocks </h1> <IoIosArrowForward className="text-2xl" />
+          <div className="menu-item">
+            <Link to="/" className="menu-link"><IoIosCube /> Stocks </Link> 
+            <span><IoIosArrowForward className="arrow-icon" /></span>
           </div>
 
           {/*sales*/}
-          <div className='flex justify-between'>
-            <h1 className='flex text-xl pb-3 gap-2 text-gray-500 items-center'><IoIosCube /> Sales </h1> <IoIosArrowForward className="text-2xl" />
+          <div className="menu-item">
+            <Link to="/" className="menu-link"><IoIosCube /> Sales </Link> 
+            <span><IoIosArrowForward className="arrow-icon" /></span>
           </div>
 
           {/*documents*/}
-          <div className='flex justify-between'>
-            <h1 className='flex text-xl pb-3 gap-2 text-gray-500 items-center'><IoIosCube /> Documents </h1> <IoIosArrowForward className="text-2xl" />
+          <div className="menu-item">
+            <Link to="/" className="menu-link"><IoIosCube /> Documents </Link> 
+            <span><IoIosArrowForward className="arrow-icon" /></span>
           </div>
 
           {/*return and audit*/}
-          <div className='flex justify-between'>
-            <h1 className='flex text-xl pb-3 gap-2 text-gray-500 items-center'><IoIosCube /> Return & Audit </h1> <IoIosArrowForward className="text-2xl" />
+          <div className="menu-item">
+            <Link to="/" className="menu-link"><IoIosCube /> Return & Audit </Link> 
+            <span><IoIosArrowForward className="arrow-icon" /></span>
           </div>
 
           {/*report*/}
-          <div className='flex justify-between'>
-            <h1 className='flex text-xl pb-3 gap-2 text-gray-500 items-center'><IoIosCube /> Report </h1> <IoIosArrowForward className="text-2xl" />
+          <div className="menu-item">
+            <Link to="/" className="menu-link"><IoIosCube /> Report </Link> 
+            <span><IoIosArrowForward className="arrow-icon" /></span>
           </div>
         </div>
 
         {/*main screen*/}
-        <div className='w-[80%] overflow-auto'>
+        <div className="main-screen">
 
-        {/*outlet changer*/}
-        <div>
-          <Outlet/>
-        </div>
+          {/*outlet changer*/}
+          <div>
+            <Outlet/>
+          </div>
 
         </div>
 

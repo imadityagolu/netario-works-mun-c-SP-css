@@ -1,9 +1,19 @@
+import './NoPageFound.css';
+
 function NoPageFound() {
-    return(
+    return (
         <>
-        
-        <h1 className="text-red-600 text-2xl text-center mt-[10%]">Error 404 : Page Not Found</h1>
-        
+        {/* side pannel */}
+        <div className="side-pannel">
+
+            {/* container */}
+            <div className="error-container">
+                <div className='error-box'>
+                <h1 className="error-message">Error 404 : Page Not Found</h1>
+                </div>
+            </div>
+
+        </div>
         </>
     );
 }

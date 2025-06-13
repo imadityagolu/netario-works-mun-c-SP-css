@@ -1,25 +1,20 @@
 import { Link } from "react-router-dom";
-import { IoMdArrowRoundBack, IoIosCheckmarkCircle, IoIosArrowBack, IoIosArrowForward  } from "react-icons/io";
+import './AddProductMore.css';
 
 function AddProduct() {
-    return(
+    return (
         <>
-
           {/* tools */}
-          <div className="mt-25">
-
+          <div className="tools-container">
             {/* form */}
-            <div className="mt-5 flex px-10 justify-center">
-                <div className="border-1 border-gray-200 rounded-xl bg-white px-70 py-50 text-center">
-                  <h1 className="text-gray-300">The product has been successfully added</h1>
-                  <br></br>
-                  <Link to="/AddProduct" className="bg-blue-600 rounded-2xl px-4 py-1 text-white">+ Add More Product</Link>
+            <div className="form-container">
+                <div className="form-box">
+                  <h1 className="success-message">The product has been successfully added</h1>
+                  <br />
+                  <Link to="/AddProduct" className="add-more-button">+ Add More Product</Link>
                 </div>
             </div>
-
-
           </div>
-
         </>
     );
 }
