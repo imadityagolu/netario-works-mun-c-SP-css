@@ -38,7 +38,7 @@ function AddProduct() {
     variantButtons.reduce((acc, button) => ({ ...acc, [button]: false }), {})
   );
 
-  // Set Color as active by default when entering step 4
+  // Set Color as active by default
   useEffect(() => {
     if (currentStep === 4) {
       setVariantToggles(
@@ -50,7 +50,7 @@ function AddProduct() {
     }
   }, [currentStep, variantButtons]);
 
-  // Toggle handler for variant buttons (exclusive toggling)
+  // Toggle handler for variant buttons
   const toggleVariantContent = (button) => {
     setVariantToggles(
       variantButtons.reduce(
@@ -60,26 +60,28 @@ function AddProduct() {
     );
   };
 
-  // Navigation handlers
+  // Navigation handlers - next
   const handleNext = () => {
     if (currentStep < 4) {
       setCurrentStep(currentStep + 1);
     }
   };
 
+  // Navigation handlers - previous
   const handlePrevious = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
     }
   };
 
-  // Render the appropriate section based on currentStep
+  // Rendering steps
   const renderStep = () => {
     switch (currentStep) {
       case 1:
         return (
           <div className="step-container">
             <div>
+
               {/* General Information heading */}
               <div className="heading-container">
                 <h1 className="heading">
@@ -90,6 +92,7 @@ function AddProduct() {
 
               {/* Tools */}
               <div className="tools-container">
+
                 {/* Progress bar */}
                 <div className="progress-bar">
                   <div className="progress-step active">
@@ -120,6 +123,7 @@ function AddProduct() {
                 {/* Form */}
                 <div className="form1-container">
                   <div className="form1-box">
+
                     {/* Item Type */}
                     <div className="form-group">
                       <p><b>Item Type</b></p>
@@ -137,10 +141,9 @@ function AddProduct() {
                     </div>
 
                     {/* Product Name and SKU */}
-                    <div className="form-row">
-                      <div>
-                        <label><b>Product Name</b></label>
-                        <br />
+                    <div className="form1-row">
+                      <div className="form-col">
+                        <p><b>Product Name</b></p>
                         <input
                           type="text"
                           placeholder="Enter New Product name"
@@ -148,8 +151,7 @@ function AddProduct() {
                         />
                       </div>
                       <div>
-                        <label><b>SKU</b></label>
-                        <br />
+                        <p><b>SKU</b></p>
                         <input
                           type="text"
                           placeholder="Enter SKU"
@@ -159,10 +161,9 @@ function AddProduct() {
                     </div>
 
                     {/* Barcode */}
-                    <div className="form-row">
+                    <div className="form1-row">
                       <div>
-                        <label><b>Barcode</b></label>
-                        <br />
+                        <p><b>Barcode</b></p>
                         <div className="input-with-icon">
                           <input
                             type="text"
@@ -174,7 +175,7 @@ function AddProduct() {
                       </div>
                       <div>
                         <div className="generate-barcode">
-                          <label className="generate-label">Generate Barcode</label>
+                          <p className="generate-label">Generate Barcode</p>
                         </div>
                         <div className="input-with-icon">
                           <input
@@ -188,10 +189,9 @@ function AddProduct() {
                     </div>
 
                     {/* Category */}
-                    <div className="form-row">
+                    <div className="form1-row">
                       <div>
-                        <label><b>Category</b></label>
-                        <br />
+                        <p><b>Category</b></p>
                         <select
                           name="category"
                           id="category"
@@ -201,8 +201,7 @@ function AddProduct() {
                         </select>
                       </div>
                       <div>
-                        <label><b>Sub Category</b></label>
-                        <br />
+                        <p><b>Sub Category</b></p>
                         <select
                           name="category"
                           id="category"
@@ -214,10 +213,9 @@ function AddProduct() {
                     </div>
 
                     {/* Brand - manufacturer */}
-                    <div className="form-row">
+                    <div className="form1-row">
                       <div>
-                        <label><b>Brand/Manufacturer</b></label>
-                        <br />
+                        <p><b>Brand/Manufacturer</b></p>
                         <select
                           name="category"
                           id="category"
@@ -248,10 +246,9 @@ function AddProduct() {
                     </div>
 
                     {/* Select Supplier */}
-                    <div className="form-row">
+                    <div className="form1-row">
                       <div>
-                        <label><b>Select Supplier</b></label>
-                        <br />
+                        <p><b>Select Supplier</b></p>
                         <select
                           name="category"
                           id="category"
@@ -261,8 +258,7 @@ function AddProduct() {
                         </select>
                       </div>
                       <div>
-                        <label><b>Supplier SKU</b></label>
-                        <br />
+                        <p><b>Supplier SKU</b></p>
                         <select
                           name="category"
                           id="category"
@@ -274,10 +270,9 @@ function AddProduct() {
                     </div>
 
                     {/* Warehouse */}
-                    <div className="form-row">
+                    <div className="form1-row">
                       <div>
-                        <label><b>Warehouse/Location</b></label>
-                        <br />
+                        <p><b>Warehouse/Location</b></p>
                         <select
                           name="category"
                           id="category"
@@ -290,13 +285,14 @@ function AddProduct() {
 
                     {/* Advance */}
                     <div className="advance-section">
+
                       {/* advance toggling */}
                       <div className="toggle-group">
                         <p><b>Advance</b></p>
                         <label className="toggle-label">
                           <input
                             type="checkbox"
-                            className="sr-only"
+                            className="toggle-input"
                             checked={isToggled}
                             onChange={handleToggle}
                           />
@@ -397,6 +393,7 @@ function AddProduct() {
         return (
           <div className="step-container">
             <div>
+
               {/* Pricing & Tax heading */}
               <div className="heading-container">
                 <h1 className="heading">
@@ -407,6 +404,7 @@ function AddProduct() {
 
               {/* Tools */}
               <div className="tools-container">
+
                 {/* Progress bar */}
                 <div className="progress-bar">
                   <div className="progress-step active">
@@ -435,8 +433,10 @@ function AddProduct() {
                 {/* Form */}
                 <div className="form1-container">
                   <div className="form1-box">
+
                     {/* Purchase Price */}
-                    <div className="form-row">
+                    <br></br>
+                    <div className="form1-row">
                       <div>
                         <p><b>Purchase Price</b></p>
                         <input
@@ -446,7 +446,7 @@ function AddProduct() {
                         />
                       </div>
                       <div>
-                        <p><p>Selling Price</p></p>
+                        <p><b>Selling Price</b></p>
                         <input
                           type="text"
                           placeholder="Enter SKU"
@@ -456,7 +456,7 @@ function AddProduct() {
                     </div>
 
                     {/* Wholesale */}
-                    <div className="form-row">
+                    <div className="form1-row">
                       <div>
                         <p><b>Wholesale Price / Bulk Price</b></p>
                         <select
@@ -470,7 +470,7 @@ function AddProduct() {
                     </div>
 
                     {/* Quantity */}
-                    <div className="form-row">
+                    <div className="form1-row">
                       <div>
                         <p><b>Quantity</b></p>
                         <input
@@ -492,7 +492,7 @@ function AddProduct() {
                     </div>
 
                     {/* Discount Price */}
-                    <div className="form-row">
+                    <div className="form1-row">
                       <div>
                         <div className="label-group">
                           <p><b>Discount Price</b></p>
@@ -525,7 +525,7 @@ function AddProduct() {
                     </div>
 
                     {/* Tax Rate */}
-                    <div className="form-row">
+                    <div className="form1-row">
                       <div>
                         <div className="label-group">
                           <p><b>Tax Rate</b></p>
@@ -542,7 +542,7 @@ function AddProduct() {
                     </div>
 
                     {/* HSN / SAC */}
-                    <div className="form-row">
+                    <div className="form1-row">
                       <div>
                         <div className="label-group">
                           <p><b>HSN / SAC</b></p>
@@ -567,7 +567,7 @@ function AddProduct() {
                         <label className="toggle-label">
                           <input
                             type="checkbox"
-                            className="sr-only"
+                            className="toggle-input"
                             checked={isToggled2}
                             onChange={handleToggle2}
                           />
@@ -601,6 +601,7 @@ function AddProduct() {
                     </div>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -610,6 +611,7 @@ function AddProduct() {
         return (
           <div className="step-container">
             <div>
+
               {/* Description & Media heading */}
               <div className="heading-container">
                 <h1 className="heading">
@@ -620,6 +622,7 @@ function AddProduct() {
 
               {/* Tools */}
               <div className="tools-container">
+
                 {/* Progress bar */}
                 <div className="progress-bar">
                   <div className="progress-step active">
@@ -648,8 +651,10 @@ function AddProduct() {
                 {/* Form top */}
                 <div className="form1-container">
                   <div className="form1-box description-box">
+
                     {/* Description box */}
                     <div>
+                      <br></br>
                       <div className="label-group">
                         <p><b>Description</b></p>
                         <p className="info-icon">?</p>
@@ -673,13 +678,16 @@ function AddProduct() {
                         <label className="support-text">Support JPEG, PNG, JPG</label>
                       </div>
                     </div>
+
                     <br></br>
+
                   </div>
                 </div>
 
                 {/* Form bottom */}
                 <div className="form1-container">
                   <div className="form1-box seo-box">
+
                     {/*SEO Meta Title */}
                     <div className="form1-row">
                       <div>
@@ -762,7 +770,9 @@ function AddProduct() {
                         />
                       </div>
                     </div>
+
                     <br></br>
+                    
                   </div>
                 </div>
               </div>
@@ -861,7 +871,7 @@ function AddProduct() {
 
   return (
     <>
-      {/* stepping */}
+      {/* rendering steps */}
       {renderStep()}
 
       {/* Buttons */}

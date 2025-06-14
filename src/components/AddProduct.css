@@ -1,6 +1,11 @@
 .step-container {
   overflow: auto;
-  height: 550px;
+  height: 540px;
+  width: 95%;
+}
+
+.step-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome, Safari, Edge */
 }
 
 .heading-container {
@@ -80,8 +85,7 @@
 
 .form1-container {
   margin-top: 30px;
-  padding: 0 50px;
-  width: 88%;
+  padding: 0 60px;
 }
 
 .form1-box {
@@ -93,7 +97,9 @@
 
 .form1-row {
   display: flex;
-  gap: 40px;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 20px;
 }
 
 .form-box1.description-box {
@@ -232,10 +238,14 @@
   gap: 4px;
   align-items: center;
 }
-
 .toggle-label {
+  display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+.toggle-input {
+  display: none;
 }
 
 .toggle-switch {
@@ -244,7 +254,11 @@
   height: 20px;
   background-color: #D1D5DB;
   border-radius: 9999px;
-  transition: all 0.4s;
+  transition: background-color 0.4s;
+}
+
+.toggle-switch:hover {
+  background-color: #B9C1CC;
 }
 
 .toggle-knob {
@@ -256,11 +270,12 @@
   background-color: white;
   border-radius: 50%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s;
+  transition: transform 0.4s, background-color 0.4s;
 }
 
 .toggle-knob.toggled {
   transform: translateX(12px);
+  background-color: #6499ef;
 }
 
 .advance-content {
@@ -375,6 +390,10 @@
   width: 100%;
 }
 
+.keywords-list::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome, Safari, Edge */
+}
+
 .keyword-item {
   display: flex;
   justify-content: center;
@@ -461,6 +480,9 @@
   padding: 12px;
   background-color: #F3F4F6;
   border: 1px solid #D1D5DB;
+  position: fixed;
+  bottom: 1px;
+  width: 80%;
 }
 
 .nav-button {
